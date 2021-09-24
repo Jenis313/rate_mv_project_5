@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path')
 const app = express();
-const PORT = 3131; //Can be changed as per your machine's situation
+const PORT = 3000; //Can be changed as per your machine's situation
 
 // Load routers
 const indexRouter = require('./controllers/index.controller')
