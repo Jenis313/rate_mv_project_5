@@ -4,7 +4,11 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "create_db": "psql -U postgres -f models/sql/create_db.sql",
+    "create_tables": "psql -U postgres -d incode5 -f models/sql/create_table.sql",
+    "seed_tables": "psql -U postgres -d incode5 -f models/sql/seed_table.sql"
+
   },
   "repository": {
     "type": "git",
