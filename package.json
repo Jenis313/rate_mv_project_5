@@ -8,7 +8,6 @@
     "create_db": "psql -U postgres -f models/sql/create_db.sql",
     "create_tables": "psql -U postgres -d incode5 -f models/sql/create_table.sql",
     "seed_tables": "psql -U postgres -d incode5 -f models/sql/seed_table.sql"
-
   },
   "repository": {
     "type": "git",
@@ -22,8 +21,15 @@
   },
   "homepage": "https://github.com/Jenis313/rate_mv_project_5#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^10.0.0",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
-    "morgan": "^1.10.0"
+    "express-session": "^1.17.2",
+    "morgan": "^1.10.0",
+    "pg-promise": "^10.11.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.13"
   }
 }
