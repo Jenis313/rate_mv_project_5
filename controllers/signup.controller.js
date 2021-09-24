@@ -21,7 +21,7 @@ router.get('/',(req,res)=>{
 
 router.post("/",(req,res) => {
     // 1. validate user data 
-    const { firstname, lastname, email, password, confirm_password } = req.body
+    const { userName, email, password, confirm_password } = req.body
 
 
     // 2. check if the user already exists in db
@@ -37,7 +37,14 @@ router.post("/",(req,res) => {
     // 3. hash password - clean the email
             const cleanedEmail = email.toLowerCase().trim()
 
-            
+    // 3.5 check if password and confirm_password is the same, this could be changed to sending a json file with a false variable, and pass this to client side 
+        if(password != confirm_password){
+            res.send('<script>alert("Please check your password");window.location.href = "/signup"; </script>')
+        }
+        else{
+
+
+        
     // 4. insert into db
             db.none('INSERT INTO users (userName, email, password) VALUES ($1, $2, $3)', [userName, cleanedEmail, hash])
             .then(()=>{
@@ -48,6 +55,7 @@ router.post("/",(req,res) => {
                 console.log(err);
                 res.json(err);
             })   
+        }
         }
     })
     .catch((err)=>{

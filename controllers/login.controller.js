@@ -1,5 +1,6 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
+
 const router = express.Router();
 const db = require('./../models/db.config');
 
@@ -31,17 +32,20 @@ router.post('/',(req,res)=>{
                     // console.log(userExists.id);
                     req.session.userId = userExists.id;
                     // edit session and redirect success msg
-                //    res.send(`Greetings ${userExists.firstname}!<br> You will be redirected in a moment!
-                //    <script>
-                //    const timeout = 3000;
-               
-                //    setTimeout(() => {window.location = "http://localhost:5000/";}, timeout);
-                //    </script>
-                //    `)
+                    
+                    console.log(userExists.username);
 
-                res.render("pages/greetings",{
-                    userExists
-                })
+                   res.send(`Greetings ${userExists.username}!<br> You will be redirected in a moment!
+                   <script>
+                   const timeout = 3000;
+               
+                   setTimeout(() => {window.location = "http://localhost:5123/";}, timeout);
+                   </script>
+                   `)
+
+                // res.render("pages/greetings",{
+                //     userExists
+                // })
                   
                    
                     
