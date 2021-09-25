@@ -23,5 +23,4 @@ module.exports.redirectToHome = (req, res, next) =>{
     }
     else{
         next()
-    }
 }
