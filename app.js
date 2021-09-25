@@ -1,10 +1,11 @@
+require('dotenv').config();
 const express = require('express');
 const path = require('path')
 const app = express();
-const PORT = 3000; //Can be changed as per your machine's situation
+const PORT = process.env.PORT || 3000; //Can be changed as per your machine's situation
 
 // Load routers
-const indexRouter = require('./controllers/index.controller')
+const indexRouter = require('./routes/index')
 
 // Dev Tool
 var logger = require('morgan');
@@ -51,5 +52,7 @@ app.listen(PORT, (err) => {
         console.log('Error in LISTEN');
         return
     }
-    console.log("App listening on port ", PORT);
+    
+console.log(`App is listening at http://localhost:${PORT}`);
 })
+
