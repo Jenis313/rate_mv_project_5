@@ -1,3 +1,3 @@
-DROP DATABASE IF EXISTS incode5;
+DROP DATABASE IF EXISTS fox_mv_rating;
 
-CREATE DATABASE incode5;
+CREATE DATABASE fox_mv_rating;

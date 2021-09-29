@@ -1,67 +1,59 @@
 
 const express = require('express')
-const bcrypt = require('bcryptjs')
 const router = express.Router()
 const db = require('./../models/db.config');
-const signupRouter = require('./../routes/index')
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+const jwt = require('jsonwebtoken');
+const  configs = require('./../configs/index');
+// const signupRouter = require('./../routes/index')
+
+// Sign Token
+function generateToken(data){
+    return jwt.sign({
+        id: data.id,
+        first_name: data.first_name,
+        email: data.email
+    }, configs.JWT_SECRET/*, {
+        expiresIn: '1d'
+    }*/)
+}
 
 
-
-router.get('/',(req,res)=>{
+router.get('/',(req, res, next) => {
+  res.render('pages/signup')
+})
+router.post('/', (req, res, next) => {
+    // const result = validationResult(req); //It stores all the errors
+    // get data from form 
+    // Make sure there is no error
+    // save data into database
+    // if(!result.isEmpty()){
+    //     res.render('./pages/register.ejs', {
+    //         errors: result.errors
+    //     })
+    // }else{
     
-// console.log(req.session);
-//     res.send({
-//         title: 'Signup page'
-//     })
-
-    res.render('pages/signup', {
-        message: req.query.message
-  })
-})
-
-router.post("/",(req,res) => {
-    // 1. validate user data 
-    const { userName, email, password, confirm_password } = req.body
-
-
-    // 2. check if the user already exists in db
-    db.oneOrNone('SELECT * FROM users WHERE email = $1;', [email])
-    .then(userExists => {
-        if (userExists){
-            // user exists, alert to prompt login
-            res.redirect('/login?message=User%20already%20exists.')
-        }
-        else{
-            const salt = bcrypt.genSaltSync(10);
-            const hash = bcrypt.hashSync(password, salt);
-    // 3. hash password - clean the email
-            const cleanedEmail = email.toLowerCase().trim()
-
-    // 3.5 check if password and confirm_password is the same, this could be changed to sending a json file with a false variable, and pass this to client side 
-        if(password != confirm_password){
-            res.send('<script>alert("Please check your password");window.location.href = "/signup"; </script>')
-        }
-        else{
-
-
-        
-    // 4. insert into db
-            db.none('INSERT INTO users (userName, email, password) VALUES ($1, $2, $3)', [userName, cleanedEmail, hash])
-            .then(()=>{
-                res.redirect('/login?message=User%20successfully%20created.')
-                
+        const {username, email, password} = req.body;
+        const cleanedEmail = email.toLowerCase().trim()
+        bcrypt.hash(password, saltRounds, (err, hash) => {
+            if(err){
+                return next(err);
+            }
+            db.oneOrNone("INSERT INTO users(username, email, password) VALUES ($1, $2, $3) RETURNING * " , [username, cleanedEmail, hash])
+            .then((user) => {
+                let token = generateToken(user);//It generates a token for the user
+                // console.log('token ---> ', token)
+                res.cookie('jwt', token)
+                res.redirect('/')
+                // res.json(user); 
             })
-            .catch((err)=>{
+            .catch((err) => {
                 console.log(err);
-                res.json(err);
-            })   
-        }
-        }
-    })
-    .catch((err)=>{
-        console.log(err);
-        res.json(err);
-    }) 
-})
+                next(err);
+            })
+        });
+    // }
 
+})
 module.exports = router

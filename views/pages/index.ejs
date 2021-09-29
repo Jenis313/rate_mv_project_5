@@ -1,155 +1,151 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movies API</title>
-</head>
-<body>
-    <%- include('../partials/header') %>
+<%- include('../partials/header') %>
+    <main>
+        <section class="hero">
 
-    <div class="search-bar">
-        <select>
-        <option>Comedy</option>
-        <option>Drama</option>
-        <option>Thriller</option>
-        <option>Animation</option>
-        <option>Action</option>
-        <option>Documentary</option>
-    </select>
-        <input type="text" placeholder="Search a movie">
-    </div>
-</div>
+            <%- include('../partials/searchbar') %>
 
-<div class="container">
-        <div class="social-media">
-            <p>Follow us: </p>
-            <a href="#!"><i class="ion-social-facebook"></i></a>
-            <a href="#!"><i class="ion-social-twitter"></i></a>
-            <a href="#!"><i class="ion-social-instagram"></i></a>
-        </div>
+            <div class="feature-movies">
+                <div class="heading container">
+                    <h1>Featured movies</h1>
+                </div>
+                <div class="container movie-container-main">
+                    <!-- <div class="movie">
+                        <div class="movie-img">
+                            <a href="#">
+                                <img src="#" alt="">
 
-<div class="movie-list">
-         <div class="movie-img">
-            <img src="#!" alt="movie poster">
-        </div> 
-        <div class="movie-hover">
-            <a href="movie.ejs">Details</a>
-        </div>
-        <div class="movie-title">
-            <h6><a href="#!">The Suicide Squad</a></h6>
-            <p><i class="ion-android-star"></i><span>7.9</span> /10</p>
-        </div>
-</div>
-    
-<div class="movie-list">
-    <div class="movie-img">
-       <img src="#!" alt="movie poster">
-   </div> 
-   <div class="movie-hover">
-       <a href="movie.ejs">Details</a>
-   </div>
-   <div class="movie-title">
-       <h6><a href="#!">Shang-Chi and the Legend of the Ten Rings</a></h6>
-       <p><i class="ion-android-star"></i><span>7.9</span> /10</p>
-   </div>
-</div>
+                            </a>
+                        </div>
+                        <div class="movie-details">
+                            <h3><a href="#">Movie Title</a></h3>
+                            <p><i class="fas fa-star"></i> <span>4.6</span></p>
+                        </div>
+                    </div>
+                    <div class="movie">
+                        <div class="movie-img">
+                            <a href="#">
+                                <img src="#" alt="">
 
-<div class="movie-list">
-    <div class="movie-img">
-       <img src="#!" alt="movie poster">
-   </div> 
-   <div class="movie-hover">
-       <a href="movie.ejs">Details</a>
-   </div>
-   <div class="movie-title">
-       <h6><a href="#!">SAS: Red Notice</a></h6>
-       <p><i class="ion-android-star"></i><span>6</span> /10</p>
-   </div>
-</div>
+                            </a>
+                        </div>
+                        <div class="movie-details">
+                            <h3><a href="#">Movie Title</a></h3>
+                            <p><i class="fas fa-star"></i> <span>4.6</span></p>
+                        </div>
+                    </div>
+                    <div class="movie">
+                        <div class="movie-img">
+                            <a href="#">
+                                <img src="#" alt="">
 
-<div class="movie-list">
-    <div class="movie-img">
-       <img src="#!" alt="movie poster">
-   </div> 
-   <div class="movie-hover">
-       <a href="movie.ejs">Details</a>
-   </div>
-   <div class="movie-title">
-       <h6><a href="#!">Jurassic Hunt</a></h6>
-       <p><i class="ion-android-star"></i><span>5</span> /10</p>
-   </div>
-</div>
-    
+                            </a>
+                        </div>
+                        <div class="movie-details">
+                            <h3><a href="#">Movie Title</a></h3>
+                            <p><i class="fas fa-star"></i> <span>4.6</span></p>
+                        </div>
+                    </div>
+                    <div class="movie">
+                        <div class="movie-img">
+                            <a href="#">
+                                <img src="#" alt="">
 
-<div class="movie-list">
-    <div class="movie-img">
-       <img src="#!" alt="movie poster">
-   </div> 
-   <div class="movie-hover">
-       <a href="movie.ejs">Details</a>
-   </div>
-   <div class="movie-title">
-       <h6><a href="#!">PAW Patrol: The Movie</a></h6>
-       <p><i class="ion-android-star"></i><span>7.9</span> /10</p>
-   </div>
-</div>
+                            </a>
+                        </div>
+                        <div class="movie-details">
+                            <h3><a href="#">Movie Title</a></h3>
+                            <p><i class="fas fa-star"></i> <span>4.6</span></p>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </section>
+        <section class="movies">
+            <div class="container">
+                <h2 id="movies-by-gerne">POPULAR MOVIES</h2>
+                <div class="movies-list">
+                    <!-- <div class="movie secondary-movie">
+                        <div class="movie-img">
+                            <a href="#">
+                                <img src="#" alt="">
 
-<div class="movie-list">
-    <div class="movie-img">
-       <img src="#!" alt="movie poster">
-   </div> 
-   <div class="movie-hover">
-       <a href="movie.ejs">Details</a>
-   </div>
-   <div class="movie-title">
-       <h6><a href="#!">Space Jam: A New Legacy</a></h6>
-       <p><i class="ion-android-star"></i><span>7.4</span> /10</p>
-   </div>
-</div>
+                            </a>
+                        </div>
+                        <div class="movie-hover">
+                            <a href="#">Details</a>
+                        </div>
+                        <div class="movie-details">
+                            <h3><a href="#">Movie Title</a></h3>
+                            <p><i class="fas fa-star"></i> <span>4.6</span></p>
+                        </div>
+                    </div>
+                    <div class="movie secondary-movie">
+                        <div class="movie-img">
+                            <a href="#">
+                                <img src="#" alt="">
 
-<div class="movie-list">
-    <div class="movie-img">
-       <img src="#!" alt="movie poster">
-   </div> 
-   <div class="movie-hover">
-       <a href="movie.ejs">Details</a>
-   </div>
-   <div class="movie-title">
-       <h6><a href="#!">F9</a></h6>
-       <p><i class="ion-android-star"></i><span>7.5</span> /10</p>
-   </div>
-</div>
+                            </a>
+                        </div>
+                        <div class="movie-hover">
+                            <a href="#">Details</a>
+                        </div>
+                        <div class="movie-details">
+                            <h3><a href="#">Movie Title</a></h3>
+                            <p><i class="fas fa-star"></i> <span>4.6</span></p>
+                        </div>
+                    </div>
+                    <div class="movie secondary-movie">
+                        <div class="movie-img">
+                            <a href="#">
+                                <img src="#" alt="">
 
-<div class="movie-list">
-    <div class="movie-img">
-       <img src="#!" alt="movie poster">
-   </div> 
-   <div class="movie-hover">
-       <a href="movie.ejs">Details</a>
-   </div>
-   <div class="movie-title">
-       <h6><a href="#!">Escape Room: Tournament of Champions</a></h6>
-       <p><i class="ion-android-star"></i><span>7.1</span> /10</p>
-   </div>
-</div>
+                            </a>
+                        </div>
+                        <div class="movie-hover">
+                            <a href="#">Details</a>
+                        </div>
+                        <div class="movie-details">
+                            <h3><a href="#">Movie Title</a></h3>
+                            <p><i class="fas fa-star"></i> <span>4.6</span></p>
+                        </div>
+                    </div>
+                    <div class="movie secondary-movie">
+                        <div class="movie-img">
+                            <a href="#">
+                                <img src="#" alt="">
 
-<div class="movie-list">
-    <div class="movie-img">
-       <img src="#!" alt="movie poster">
-   </div> 
-   <div class="movie-hover">
-       <a href="movie.ejs">Details</a>
-   </div>
-   <div class="movie-title">
-       <h6><a href="#!">The Boss Baby: Family Business</a></h6>
-       <p><i class="ion-android-star"></i><span>7.8</span> /10</p>
-   </div>
-</div>
+                            </a>
+                        </div>
+                        <div class="movie-hover">
+                            <a href="#">Details</a>
+                        </div>
+                        <div class="movie-details">
+                            <h3><a href="#">Movie Title</a></h3>
+                            <p><i class="fas fa-star"></i> <span>4.6</span></p>
+                        </div>
+                    </div>
+                    <div class="movie secondary-movie">
+                        <div class="movie-img">
+                            <a href="#">
+                                <img src="#" alt="">
 
-
-
-    <%- include('../partials/footer') %>
-</body>
-</html>
+                            </a>
+                        </div>
+                        <div class="movie-hover">
+                            <a href="#">Details</a>
+                        </div>
+                        <div class="movie-details">
+                            <h3><a href="#">Movie Title</a></h3>
+                            <p><i class="fas fa-star"></i> <span>4.6</span></p>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </section>
+    </main>
+    <script
+    src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+    crossorigin="anonymous"></script>
+    <script src="./../javascripts/home.js"></script>
+<%- include('../partials/footer') %>

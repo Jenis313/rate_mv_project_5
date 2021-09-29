@@ -1,69 +1,65 @@
 const express = require('express');
-const bcrypt = require('bcryptjs');
-
 const router = express.Router();
+const bcrypt = require('bcrypt');
 const db = require('./../models/db.config');
+const jwt = require('jsonwebtoken');
+const  configs = require('./../configs/index');
+// const {body, validationResult} = require('express-validator');
 
-router.get('/',(req,res)=>{
+// Sign Token
+function generateToken(data){
+    return jwt.sign({
+        id: data.id,
+        first_name: data.first_name,
+        email: data.email
+    }, configs.JWT_SECRET/*, {
+        expiresIn: '1d'
+    }*/)
+}
 
-    res.render('pages/login', {
-        message: req.query.message
-      })
-    
+router.get('/',(req, res, next)=>{
+    res.render('pages/login')
 })
 
-router.post('/',(req,res)=>{
-    const {email, password} = req.body
-    // 1. validate (e.g. joi)
+router.post('/',(req, res, next)=>{
+    const {email, password} = req.body;
 
-    // 2. Check db if email exists alr
-        //2.1 Clean email
+    //Clean email
     const cleanedEmail = email.toLowerCase().trim()
 
-    db.oneOrNone('SELECT * FROM users WHERE email = $1;', email)
-    .then(userExists => {
-        if (!userExists) {
-            res.redirect('/login?message=User%20credentials%20incorrect')   
-        } else {
-    // 3. verify pw and edit session (e.g. regEx)
-            bcrypt.compare(password,userExists.password)
-            .then(result => {
-                if (result) {
-                    // console.log(userExists.id);
-                    req.session.userId = userExists.id;
-                    // edit session and redirect success msg
-                    
-                    console.log(userExists.username);
-
-                   res.send(`Greetings ${userExists.username}!<br> You will be redirected in a moment!
-                   <script>
-                   const timeout = 3000;
-               
-                   setTimeout(() => {window.location = "http://localhost:5123/";}, timeout);
-                   </script>
-                   `)
-
-                // res.render("pages/greetings",{
-                //     userExists
-                // })
-                  
-                   
-                    
-                }
-                else{
-                    res.redirect('/login?message=User%20credentials%20incorrect')
-                }
-            })
-            .catch(err =>{
-                console.log(err);
-                res.send(err);
-            })  
-        }
+    db.oneOrNone('SELECT * FROM users WHERE email = $1;', cleanedEmail)
+    .then((user) => {
+      // console.log('user --> ', user)
+      if(!user){
+          res.render('./pages/login.ejs', {
+              error : 'Invalid Credientials!'
+          })
+          return 
+      }
+      //User found now, verify password
+      const hash = user.password
+      bcrypt.compare(password, hash)
+      .then((result) => {
+          // if verified, generate token, set token into header and redirect to home page
+          if(result){
+              let token = generateToken(user);//It generates a token for the user
+              // console.log('token --> ', token)
+              res.cookie('jwt', token);
+              res.redirect('/');
+              // res.send('Success Now you are logged in')
+          }else{
+              res.render('./pages/login.ejs', {
+                  error : 'Invalid Credientials!'
+              })
+            //   res.send('Invalid credientials')
+          }
+      })
+      .catch((err) => {
+        next(err);
+      })
     })
-    .catch(err=>{
-        console.log(err);
-        res.send(err);
+    .catch((err)=>{
+        next(err);
     })
-})
-
+  })
 module.exports = router

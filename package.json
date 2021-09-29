@@ -4,10 +4,9 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "create_db": "psql -U postgres -f models/sql/create_db.sql",
-    "create_tables": "psql -U postgres -d incode5 -f models/sql/create_table.sql",
-    "seed_tables": "psql -U postgres -d incode5 -f models/sql/seed_table.sql"
+    "create_tables": "psql -U postgres -d fox_mv_rating -f models/sql/create_table.sql",
+    "seed_tables": "psql -U postgres -d fox_mv_rating -f models/sql/seed_table.sql"
   },
   "repository": {
     "type": "git",
@@ -21,11 +20,13 @@
   },
   "homepage": "https://github.com/Jenis313/rate_mv_project_5#readme",
   "dependencies": {
-    "bcryptjs": "^2.4.3",
+    "bcrypt": "^5.0.1",
+    "cookie-parser": "^1.4.5",
     "dotenv": "^10.0.0",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
     "express-session": "^1.17.2",
+    "jsonwebtoken": "^8.5.1",
     "morgan": "^1.10.0",
     "pg-promise": "^10.11.0"
   },

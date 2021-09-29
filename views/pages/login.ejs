@@ -1,33 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Log in</title>
-</head>
-<body>
-    <main>
-        <% if (typeof message !== 'undefined') { %>
-            <p style="color: red"><%= message %></p>
-          <% } %>
-        
-            <form method= "POST" action="/login">
-            <div>
-                <label for="email">Email</label>
-                <input id="email" type="email" name="email">
-            </div>
-            <div>
-                <label for="password">Password</label>
-                <input id="password" type="password" name="password">
-            </div>
-            <div class = "center">
-                <button type = "submit">Log in</button>
-            </form>
-                <a href="http://localhost:5123/signup">Sign up</a>
-               
-            </div>
+<%- include('../partials/auth-header') %>
 
+    <main>
+       <section class="auth login">
+           <div class="container">
+                <div class="auth-form-container">
+                    <h1>LOGIN</h1>
+                    <form class="auth-form" method= "POST" action="/login">
+                        <div class="email">
+                            <label for="email">Email</label>
+                            <input id="email" type="email" name="email">
+                        </div>
+                        <div class="password">
+                            <label for="password">Password</label>
+                            <input id="password" type="password" name="password">
+                        </div>
+                        <div class="submit">
+                            <label for="submit"></label>
+                            <button id="submit-btn" name="submit">Log in</button>
+                        </div>
+                    </form>
+                    <p class="sign-up">Don't have an account? <a href="/signup">Register</a></p>
+                    <p class="forget-password">  |  Please don't forget your password 🙏</p>
+                </div>
+           </div>
+       </section>
     </main>
-</body>
-</html>
+<%- include('../partials/footer') %>

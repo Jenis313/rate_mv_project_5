@@ -2,10 +2,15 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path')
 const app = express();
-const PORT = process.env.PORT || 3000; //Can be changed as per your machine's situation
+const PORT = process.env.PORT || 3000;
+const cookieParser = require('cookie-parser');
+const authenticate = require('./middlewares/authentication');
 
 // Load routers
-const indexRouter = require('./routes/index')
+const indexRouter = require('./controllers/index.controller')
+const movieRouter = require('./controllers/movie.controller')
+const loginRouter = require('./controllers/login.controller')
+const signupRouter = require('./controllers/signup.controller')
 
 // Dev Tool
 var logger = require('morgan');
@@ -18,11 +23,17 @@ app.set('view engine', 'ejs');
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+// user cookie parser 
+app.use(cookieParser());
+
 //serve static files
 app.use(express.static('public'));
 
 // Routes
-app.use('/', indexRouter);
+app.use('/', authenticate, indexRouter);
+app.use('/movie', movieRouter);
+app.use('/login', loginRouter);
+app.use('/signup', signupRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

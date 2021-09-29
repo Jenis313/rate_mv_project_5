@@ -1,40 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <main>
-        <form method= "POST" action="/signup">
-            <div>
-                <label for="userName">Name</label>
-                <input id="userName" type="text" name="userName" required>
-            </div>
+<%- include('../partials/auth-header') %>
 
-            <div>
-                <label for="email">Email</label>
-                <input id="email" type="email" name="email" required>
-            </div>
-            <div>
-                <label for="password">Password</label>
-                <input id="password" type="password" name="password" required>
-            </div>
-
-            <div>
-                <label for="confirm_password">Confirm Password</label>
-                <input id="confirm_password" type="password" name="confirm_password" required> 
-            </div>
-            <div>
-                <button type = "submit">Sign Up</button>
-              
-            </div>
-            <div><span>Already have an account? </span><a href="http://localhost:5123/"><span>Log in</span> </a></div>
-            
-        </form>
-
-    </main>
-</body>
-</html>
+<main>
+    <section class="auth signup">
+        <div class="container">
+             <div class="auth-form-container">
+                 <h1>Sign Up</h1>
+                 <form class="auth-form" method= "POST" action="/login">
+                     <div>
+                         <label for="userName">Name</label>
+                         <input id="userName" type="text" name="userName" required>
+                     </div>
+         
+                     <div>
+                         <label for="email">Email</label>
+                         <input id="email" type="email" name="email" required>
+                     </div>
+                     <div>
+                         <label for="password">Password</label>
+                         <input id="password" type="password" name="password" required>
+                     </div>
+         
+                     <div>
+                         <label for="confirm_password">Confirm Password</label>
+                         <input id="confirm_password" type="password" name="confirm_password" required> 
+                     </div>
+                     <div class="submit">
+                         <label for="submit"></label>
+                         <button id="submit-btn" name="submit">Sign up</button>
+                     </div>
+                 </form>
+                 <p class="sign-up">Already have an account? <a href="/login">login</a></p>
+             </div>
+        </div>
+    </section>
+ </main>
+<%- include('../partials/footer') %>

@@ -1,0 +1,226 @@
+:root {
+    --primary: #020D18;
+    --red: #DD003F;
+    --search-bar: #233A50;
+    --star: #F5B50A;
+    --lines: #405266;
+    --light-white: #abb7c4;
+    --white: #ffffff;
+    --linky: #4280BF;
+}
+
+*, *::after, *::before{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+h1{
+    font-size: 3em;
+    font-weight: 600;
+}
+h2{
+    font-weight: 600;
+    font-size: 1.9em;
+}
+h3{
+    font-weight: 500;
+    font-size: 1.5em;
+}
+h4{
+    font-weight: 500;
+    font-size: 1.3em;
+}
+a{
+    text-decoration: none;
+}
+.container{
+    margin: 0 12%;
+}
+.fa-star{
+    color: var(--star)
+}
+body{
+    font-family: 'Dosis', sans-serif;
+    font-size: 15px;
+    background-color: var(--primary);
+    color: var(--white);
+}
+
+/* Header */
+header{
+    background-color: var(--primary);
+    padding: 2em 0;
+}
+header>.container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.main-logo{
+    width: 10%;
+}
+.main-logo img{
+    width: 100%;
+}
+.main-nav ul{
+    display: flex;
+}
+.main-nav li{
+    margin-left: 2em;
+    list-style-type: none;
+}
+.main-nav li a{
+    color: var(--light-white);
+    font-weight: 600;
+    font-size: 1.1em;
+}
+#call-to-a{
+    background-color: var(--red);
+    color: var(--white);
+    padding: .6em 2em;
+}
+
+
+/* Hero */
+.hero{
+    background-image: url(https://uc7cb4c20f0e7d903ad3af623d90.previews.dropboxusercontent.com/p/thumb/ABSGKObhClzR8YAU49mdMXvglr3tP_LL_z1XtVQQm88BmApcTYwBPI9jm-y14QZW4Y-u3N4tbQ-nqRFTlZQmrksFSyWCafWopdTP84zm_9-ax8LLDzUHwzQZqnA8OexxJmi7f38G8_U-1kuv9T9yWLsyZGxuY2_DcVQe85GAazFeXu9dw0_eGfDyPg2bufis0GXMJaf5Js4W8-1JhaI9tlJ-3qzPSAeFNu4zl4IU0xIrWGtsLJhRRPg8mO6MYzBrFZB6JG4gZ3l1ji-Ry5zxOiKMpj9kOmsQb5JMOb3BhUW7d0lqZPvQbeZgnaxZ2713ky57Ho56IfY6Ed1hh02Ef7KNZPE_Ja7VuZdT2r6QcPUrTCMpzN0blsYXtvw-vq4Y-wx3TkoQ_7xjR6gXYeZuv3xC/p.jpeg?fv_content=true&size_mode=5);
+    padding-top: 1px;
+}
+
+/* Search bar */
+.search-bar form{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: var(--search-bar);
+    padding: 1em 2em;
+    margin: 1em 0 2em;
+    border: 5px solid #000;
+}
+.movie-search-input{
+    flex:1;
+}
+.movie-search-input>input{
+    width: 100%;
+    margin: 0 2em;
+}
+.search-bar form>div>input,select,button{
+    border: none;
+    outline: none;
+    color:var(--white);
+    background-color: inherit;
+    font-size: 1.1em;
+}
+.search-bar option{
+    background-color: var(--search-bar);
+}
+#movie-search-input::placeholder {
+    color: var(--light-white);
+}
+#movie-search-input:-webkit-autofill {
+    -webkit-box-shadow:0 0 0 50px var(--search-bar) inset; /* Change the color to your own background color */
+    -webkit-text-fill-color: var(--light-white);
+}
+#movie-search-input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 50px var(--search-bar) inset;/*your box-shadow*/
+    -webkit-text-fill-color: var(--light-white);
+} 
+#submit button:hover{
+    cursor: pointer;
+}
+
+/* Feature movies */
+.feature-movies{
+    color: var(--white);
+    padding: 1em 0 3em;
+
+}
+.feature-movies h1{
+    margin-bottom: .4em;
+}
+.feature-movies>.container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* individual movie */
+.movie{
+    position: relative;
+    width: 24%;    
+}
+/* .movie-img::after{
+    box-shadow: inset -5px -50px 100px -15px #000000;
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: 100%;
+} */
+.movie-img{
+    width: 100%;
+}
+.movie-img>a{
+    display: block;
+}
+.movie-img img{
+    width: 100%;
+}
+
+.movie .movie-details{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background: rgb(255,255,255);
+    background: linear-gradient(180deg, rgba(255,255,255,0.0000491947120645133) 0%,
+     rgba(0,0,0,0.6858893899356618) 40%);
+    padding:5em 0 2em 1em ;
+    width: 100%;
+}
+.movie-details h3 a{
+    display: block;
+    color: var(--white);
+    font-weight: 700;
+}
+
+/* gerne movies */
+.movies{
+    padding: 3em 0;
+}
+.movies h2{
+    padding-bottom: .6em ;
+}
+.movies-list{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.secondary-movie{
+    margin-bottom: 2em;
+    width: 19%;    
+
+}
+.movie-hover{
+    display: none;
+}
+
+
+/* footer */
+.copyright{
+    color: var(--light-white);
+    font-size: .9em;
+    padding: 2em 0;
+    border-top: 1px solid var(--lines);
+}
+.copyright>.container{
+    height: 100%;
+    display: flex;
+    align-items: center;;
+    justify-content: center;
+}
+
+
+
+
+/* Make this into separate file */

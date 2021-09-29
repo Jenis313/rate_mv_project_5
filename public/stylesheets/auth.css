@@ -1,0 +1,38 @@
+.auth>.container{
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.auth-form-container{
+    background-color: var(--white);
+    color: var(--primary);
+    width: 36%;
+    padding: 2em 2.4em;
+    margin: 1em 0 2.5em;
+}
+.auth-form-container>h1{
+    padding-bottom: .5em;
+    text-align: center;
+}
+.auth-form label{
+    display: block;
+    font-weight: 600;
+    font-size: 1.3em;
+}
+.auth-form input{
+    font-size: 1.1em;
+    width: 100%;
+    margin:.5em 0 1em;
+    padding:.6em .5em;
+}
+#submit-btn{
+    background-color: var(--red);
+    width: 100%;
+    padding: .7em .5em;
+    text-transform: uppercase;
+    margin-bottom: .7em;
+}
+.sign-up, .forget-password{
+    display: inline;
+}
