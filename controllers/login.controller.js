@@ -18,7 +18,9 @@ function generateToken(data){
 }
 
 router.get('/',(req, res, next)=>{
-    res.render('pages/login')
+    res.render('pages/login',{
+        currentUser: req.currentUser
+    })
 })
 
 router.post('/',(req, res, next)=>{
@@ -32,7 +34,8 @@ router.post('/',(req, res, next)=>{
       // console.log('user --> ', user)
       if(!user){
           res.render('./pages/login.ejs', {
-              error : 'Invalid Credientials!'
+              error : 'Invalid Credientials!',
+              currentUser: req.currentUser //sends undefined value and ejs will work based upon this undefined result
           })
           return 
       }
@@ -49,7 +52,8 @@ router.post('/',(req, res, next)=>{
               // res.send('Success Now you are logged in')
           }else{
               res.render('./pages/login.ejs', {
-                  error : 'Invalid Credientials!'
+                  error : 'Invalid Credientials!',
+                  currentUser: req.currentUser
               })
             //   res.send('Invalid credientials')
           }

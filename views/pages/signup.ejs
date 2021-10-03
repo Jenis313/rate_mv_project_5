@@ -1,37 +1,72 @@
 <%- include('../partials/auth-header') %>
 
 <main>
-    <section class="auth signup">
-        <div class="container">
-             <div class="auth-form-container">
-                 <h1>Sign Up</h1>
-                 <form class="auth-form" method= "POST" action="/login">
-                     <div>
-                         <label for="userName">Name</label>
-                         <input id="userName" type="text" name="userName" required>
-                     </div>
-         
-                     <div>
-                         <label for="email">Email</label>
-                         <input id="email" type="email" name="email" required>
-                     </div>
-                     <div>
-                         <label for="password">Password</label>
-                         <input id="password" type="password" name="password" required>
-                     </div>
-         
-                     <div>
-                         <label for="confirm_password">Confirm Password</label>
-                         <input id="confirm_password" type="password" name="confirm_password" required> 
-                     </div>
-                     <div class="submit">
-                         <label for="submit"></label>
-                         <button id="submit-btn" name="submit">Sign up</button>
-                     </div>
-                 </form>
-                 <p class="sign-up">Already have an account? <a href="/login">login</a></p>
-             </div>
-        </div>
-    </section>
+    <% if(!currentUser){ %>
+        <section class="auth signup">
+            <div class="container">
+                 <div class="auth-form-container">
+                     <h1>Sign Up</h1>
+                     <%if(typeof errors !== 'undefined'){%>
+                        <div class="auth-error">
+                            <% errors.forEach((error) => {%>
+                                <p class="auth-error-para"><%= error.msg %></p>
+                            <% }) %>
+                        </div>
+                     <%}%>
+                     <form class="auth-form" method= "POST" action="/signup">
+                         <div>
+                             <label for="userName">Name</label>
+                             <input id="userName" type="text" name="userName" >
+                         </div>
+             
+                         <div>
+                             <label for="email">Email</label>
+                             <input id="email" type="email" name="email" >
+                         </div>
+                         <div>
+                             <label for="password">Password</label>
+                             <input id="password" type="password" name="password" >
+                         </div>
+             
+                         <div>
+                             <label for="confirm_password">Confirm Password</label>
+                             <input id="confirm_password" type="password" name="confirm_password" > 
+                         </div>
+                         <div class="submit">
+                             <label for="submit"></label>
+                             <button id="submit-btn" name="submit">Sign up</button>
+                         </div>
+                     </form>
+                     <p class="sign-up">Already have an account? <a href="/login">login</a></p>
+                 </div>
+            </div>
+        </section>
+    <% }else{ %>
+    <div class="auth-log-out">
+        <h2 style="text-align: center;">You are already logged in. <a href="/logout">Logout</a> to switch account or to create a new account</h2>
+    </div>
+    <% } %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
  </main>
 <%- include('../partials/footer') %>

@@ -4,14 +4,14 @@
         <section class="movie-main">
             <div class="container">
                 <div class="movie-dp left">
-                    <img src="https://image.tmdb.org/t/p/original//gEU2QniE6E77NI6lCU6MxlNBvIx.jpg" width="300px">
-                    <div class="trailer-btn">
+                    <img src="#">
+                    <div class="trailer-btn"> 
                         <a href="#"><i class="fas fa-play"></i> WATCH TRAILER</a>
                     </div>
                 </div>
                 <div class="movie-descript right">
                     <div class="movie-descript-heading">
-                        <h1>Skyfall: Quantum of Spectre <span> 2015</span></h1>
+                        <h1> <span></span></h1>
                     </div>
                     <div class="movie-share">
                         <div class="share-icon">
@@ -33,23 +33,31 @@
                                 <i class="fas fa-star"></i>
                             </div>
                             <div class="right-score">
-                                <p><span>4.5</span>/10</p>
-                                <small><span>45</span> Reviews</small>
+                                <p><span class="movie-avg-score"></span>/5</p>
+                                <small><span class="movie-score-counts"></span> Reviews</small>
                             </div>
                         </div>
                         <div class="your-review-score">
-                            <p class="rate-movie">Rate this movie </p>
                             <!-- logic -->
                             <!-- if not logged in display-> <p> You must <a>logged in</a> to rate movies in</p> -->
-                            <!-- if logged in but hasn't rated movie based on his database record allow rating -->
+                            <!-- if logged in but hasn't rated movie based on his/her database record allow rating -->
                             <!-- if logged in and already rated display-> <p>You rated //score from database</p> -->
-                            <div class="stars">
-                               <i class="fas fa-star"></i>
-                               <i class="fas fa-star"></i>
-                               <i class="fas fa-star"></i>
-                               <i class="fas fa-star"></i>
-                               <i class="fas fa-star"></i>
-                            </div>
+                            <% if(!currentUser) {%>
+                                <p class="rate-movie">You must <a href="/login" class="rate-no-login">logged in</a> to rate movies</p>
+                            <% } else {%>
+                                <% if(!canRate){ %>
+                                    <p class="rate-movie">You rated <span><%= rating %></span>  stars.</p>
+                                    <% }else{ %>
+                                        <p class="rate-movie">Rate this movie </p>
+                                        <div class="rating-stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        </div>
+                                    <% } %>
+                            <%}%>
                         </div>
                     </div>
                     <div class="movie-overview">
@@ -57,59 +65,26 @@
                         <div class="movie-overview-inner">
                             <div class="movie-overview-inner-left">
                                 <div class="movie-summary">
-                                    <p>Tony Stark creates the Ultron Program to protect the world, but when the peacekeeping program becomes hostile, The Avengers go into action to try and defeat a virtually impossible enemy together. Earth's mightiest heroes must come together once again to protect the world from global extinction.</p>
+                                    <p></p>
                                 </div>
                                 <div class="movie-images">
                                     <h3>IMAGES</h3>
                                     <div class="movie-images-inner">
-                                        <div class="movie-image-single">
-                                            <a href="#"><img src="https://image.tmdb.org/t/p/original//gEU2QniE6E77NI6lCU6MxlNBvIx.jpg" width="300px" alt=""></a>
-                                        </div>
-                                        <div class="movie-image-single">
-                                            <a href="#"><img src="https://image.tmdb.org/t/p/original//gEU2QniE6E77NI6lCU6MxlNBvIx.jpg" width="300px" alt=""></a>
-                                        </div>
-                                        <div class="movie-image-single">
-                                            <a href="#"><img src="https://image.tmdb.org/t/p/original//gEU2QniE6E77NI6lCU6MxlNBvIx.jpg" width="300px" alt=""></a>
-                                        </div>
-                                        <div class="movie-image-single">
-                                            <a href="#"><img src="https://image.tmdb.org/t/p/original//gEU2QniE6E77NI6lCU6MxlNBvIx.jpg" width="300px" alt=""></a>
-                                        </div>
                                     </div>
                                 </div>
                                 <div class="movie-casts">
                                     <h3>CASTS</h3>
                                     <div class="movie-casts-inner">
-                                        <div class="single-movie-cast">
-                                            <img src="https://image.tmdb.org/t/p/original//gEU2QniE6E77NI6lCU6MxlNBvIx.jpg" width="300px" alt="">
-                                            <a class="movie-cast" href="#">Tony Stark</a>
-                                        </div>
-                                        <div class="single-movie-cast">
-                                            <img src="https://image.tmdb.org/t/p/original//gEU2QniE6E77NI6lCU6MxlNBvIx.jpg" width="300px" alt="">
-                                            <a class="movie-cast" href="#">Tony Stark</a>
-                                        </div><div class="single-movie-cast">
-                                            <img src="https://image.tmdb.org/t/p/original//gEU2QniE6E77NI6lCU6MxlNBvIx.jpg" width="300px" alt="">
-                                            <a class="movie-cast" href="#">Tony Stark</a>
-                                        </div><div class="single-movie-cast">
-                                            <img src="https://image.tmdb.org/t/p/original//gEU2QniE6E77NI6lCU6MxlNBvIx.jpg" width="300px" alt="">
-                                            <a class="movie-cast" href="#">Tony Stark</a>
-                                        </div><div class="single-movie-cast">
-                                            <img src="https://image.tmdb.org/t/p/original//gEU2QniE6E77NI6lCU6MxlNBvIx.jpg" width="300px" alt="">
-                                            <a class="movie-cast" href="#">Tony Stark</a>
-                                        </div><div class="single-movie-cast">
-                                            <img src="https://image.tmdb.org/t/p/original//gEU2QniE6E77NI6lCU6MxlNBvIx.jpg" width="300px" alt="">
-                                            <a class="movie-cast" href="#">Tony Stark</a>
-                                        </div>
+                                        
                                     </div>
                                 </div>
                             </div>
                             <div class="movie-overview-inner-right">
                                 <div class="director indiv">
                                     <h4>Director</h4>
-                                    <p>Jenis Rai</p>
                                 </div>
                                 <div class="writer indiv">
                                     <h4>Writer</h4>
-                                    <p>Jenis Rai</p>
                                 </div>
                                 <div class="gernes indiv">
                                     <h4>Gernes:</h4>
@@ -117,11 +92,9 @@
                                 </div>
                                 <div class="release-date indiv">
                                     <h4>Release Date</h4>
-                                    <p>Jenis Rai</p>
                                 </div>
                                 <div class="runtime indiv">
                                     <h4>Run Time</h4>
-                                    <p>Jenis Rai</p>
                                 </div>
                             </div>
                         </div>
@@ -130,4 +103,18 @@
             </div>
         </section>
     </main>
+    <script
+    src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+    crossorigin="anonymous"></script>
+    <script>
+        const movieId = <%= movieId %> 
+        let userId = 0;
+        <% if(!currentUser) {%> //If user is not logged in it will currentuser will be false otherwise it will have value
+            userId = null;
+        <% } else {%>
+            userId = <%= currentUser.id %>
+        <% }%>
+    </script>
+    <script src="./../javascripts/movie.js"></script>
 <%- include('../partials/footer') %>

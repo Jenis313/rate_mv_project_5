@@ -1,17 +1,11 @@
-const express = require('express')
-const router = express.Router()
+const express = require('express');
+const router = express.Router();
 
-router.get('/', (req,res)=>{
-    req.session.destroy((err)=>{
-        if(err){
-            console.log(err);
-            res.send(err);
-
-        }
-        else{
-            res.clearCookie('mrcoffee_sid')
-            res.redirect('/login')
-        }
+// Logout Router
+router.get('/', (req, res, next) => {
+    res.cookie('jwt', '', {
+        maxAge: 1
     })
+    res.redirect('/');
 })
-module.exports = router
+module.exports = router;

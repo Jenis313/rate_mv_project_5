@@ -36,3 +36,17 @@
 .sign-up, .forget-password{
     display: inline;
 }
+.auth-error-para{
+    text-align: center;
+    margin: .2em 0;
+    font-size: .8em;
+    letter-spacing: .1em;
+    padding: .1em 1em;
+    background-color: #FFE0E0;
+    color: red;
+}
+
+/* for active token login url */
+.auth-log-out{
+    margin: 2em 0;
+}

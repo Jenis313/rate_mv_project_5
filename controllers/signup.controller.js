@@ -6,7 +6,7 @@ const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const jwt = require('jsonwebtoken');
 const  configs = require('./../configs/index');
-// const signupRouter = require('./../routes/index')
+const {body, validationResult} = require('express-validator');
 
 // Sign Token
 function generateToken(data){
@@ -21,26 +21,61 @@ function generateToken(data){
 
 
 router.get('/',(req, res, next) => {
-  res.render('pages/signup')
+  res.render('pages/signup',{
+    currentUser: req.currentUser
+  })
 })
-router.post('/', (req, res, next) => {
-    // const result = validationResult(req); //It stores all the errors
+router.post('/', 
+    // Express validator
+    body('userName', "Name cannot be empty")
+    .notEmpty(),
+
+    body('email', "Empty or invalid email")
+    .isEmail(),
+    body('email').custom(value => {
+        return db.oneOrNone('SELECT * FROM users WHERE email = $1', value)
+        .then((user) => {
+            if(user){
+                return Promise.reject('Email already in use');
+            }
+        })
+    }), 
+
+    body('password', "Password cannot be empty")
+    .notEmpty(),
+    body('password', "Password must be longer than 6 characters and contain a letter, a number and a special character")
+    .matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/, "i"),
+
+    body('confirm_password').custom((value, { req }) => {
+        if (value !== req.body.password) {
+        throw new Error("Password confirmation does not match");
+        }
+        // Indicates the success of this synchronous custom validator
+        return true;
+    }),
+   (req, res, next) => {
+    const result = validationResult(req); //It stores all the errors
     // get data from form 
-    // Make sure there is no error
+    // Make sure there is no any errors
     // save data into database
-    // if(!result.isEmpty()){
-    //     res.render('./pages/register.ejs', {
-    //         errors: result.errors
-    //     })
-    // }else{
+    if(!result.isEmpty()){
+        console.log('errors array --> ', result.errors);
+        res.render('./pages/signup.ejs', {
+            errors: result.errors,
+            currentUser: req.currentUser
+        })
+        // res.json({
+        //     err: result.errors
+        // })
+    }else{
     
-        const {username, email, password} = req.body;
+        const {userName, email, password} = req.body;
         const cleanedEmail = email.toLowerCase().trim()
         bcrypt.hash(password, saltRounds, (err, hash) => {
             if(err){
                 return next(err);
             }
-            db.oneOrNone("INSERT INTO users(username, email, password) VALUES ($1, $2, $3) RETURNING * " , [username, cleanedEmail, hash])
+            db.oneOrNone("INSERT INTO users(username, email, password) VALUES ($1, $2, $3) RETURNING *" , [userName, cleanedEmail, hash])
             .then((user) => {
                 let token = generateToken(user);//It generates a token for the user
                 // console.log('token ---> ', token)
@@ -53,7 +88,7 @@ router.post('/', (req, res, next) => {
                 next(err);
             })
         });
-    // }
+    }
 
 })
 module.exports = router

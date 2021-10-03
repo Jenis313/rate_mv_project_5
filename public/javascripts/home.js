@@ -61,27 +61,23 @@ function createDivs(data, loopTimes){
     }
 
     for(let i=0; i<loopTimes; i++){
-        // console.log(movies[i].original_title);
+        // console.log('Movie Titile ---> ',movies[i].original_title);
 
         // Get rating from db
-        let currentMovieAverageRating = 0;
         $.getJSON(`/movie/rating-score/${movies[i].id}`, (data) => {
             // This hits the url in localhost not in tmdb and gets data from local our own backend
-            if(!data.average_rating){
-                currentMovieAverageRating = 0;
-            }else{
-                currentMovieAverageRating = data.average_rating;
-            }
+            let currentMovieAverageRating = data.average_rating;
+            
             let newMovie = $(movieDiv)
             newMovie.append(`
             <div class = 'movie-img'>    
-                <a href = '#'>
+                <a href = '/movie/${movies[i].id}'>
                     <img src = 'https://image.tmdb.org/t/p/original/${movies[i].poster_path}'>
                 </a>
             </div>
             <div class="movie-details">
                 <h3><a href="/movie/${movies[i].id}">${movies[i].original_title}</a></h3>
-                <p><i class="fas fa-star"></i> <span>${currentMovieAverageRating}</span>/10</p>
+                <p><i class="fas fa-star"></i> <span>${currentMovieAverageRating}</span>/5</p>
             </div>
             `)
             if(loopTimes>4){

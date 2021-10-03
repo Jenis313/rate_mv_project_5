@@ -2,15 +2,12 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path')
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 const cookieParser = require('cookie-parser');
 const authenticate = require('./middlewares/authentication');
 
-// Load routers
-const indexRouter = require('./controllers/index.controller')
-const movieRouter = require('./controllers/movie.controller')
-const loginRouter = require('./controllers/login.controller')
-const signupRouter = require('./controllers/signup.controller')
+// loade routes
+const mainRoute = require('./routes/index');
 
 // Dev Tool
 var logger = require('morgan');
@@ -30,10 +27,7 @@ app.use(cookieParser());
 app.use(express.static('public'));
 
 // Routes
-app.use('/', authenticate, indexRouter);
-app.use('/movie', movieRouter);
-app.use('/login', loginRouter);
-app.use('/signup', signupRouter);
+app.use('/', authenticate, mainRoute);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -47,15 +41,17 @@ app.use(function(err, req, res, next) {
   console.log('ERROR Handling middleware in execution!!! --> ', err);
 
   res.status(err.status || 500);
-  res.json({
-    msg: err.msg || err,
-    status: err.status || 404
-  })
+  // res.json({
+  //   msg: err.msg || err,
+  //   status: err.status || 404
+  // })
 
-//   // render the error page
-//   res.render('./pages/error', {
-//     msg: err.msg || err
-//   });
+  // render the error page
+  res.render('./pages/error', {
+    msg: err.msg || err,
+    status: err.status,
+    currentUser: req.currentUser
+  });
 });
 
 app.listen(PORT, (err) => {

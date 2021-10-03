@@ -5,8 +5,8 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Mr Coffee | Home</title>
-        <link rel="shortcut icon" href="./../images/logo_dark.png" type="image/x-icon">
+        <title>Home | Fox Movies Review</title>
+        <link rel="shortcut icon" href="./../images/FOX.png" type="image/x-icon">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -22,11 +22,11 @@
             </div>
             <nav class="main-nav">
                 <ul>
-                    <% if(!token){ %>
+                    <% if(!currentUser){ %>
                         <li><a href="/login">LOGIN</a></li>
                         <li><a href="/signup" id="call-to-a">SIGN UP</a></li>
                     <% } else {%>
-                        <li class="logout"><a href="#"><i class="fas fa-sign-out-alt"></i> LOG OUT</a></li>
+                        <li class="logout"><a href="/logout"><i class="fas fa-sign-out-alt"></i> LOG OUT</a></li>
                     <% }%>
                 </ul>
             </nav>

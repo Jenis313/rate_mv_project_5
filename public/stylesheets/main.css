@@ -205,6 +205,217 @@ header>.container{
     display: none;
 }
 
+/* Movie Details */
+.movie-search-bar{
+    margin-bottom: 5em;
+}
+.movie-main>.container{
+    display: flex;
+    justify-content: space-between;
+    /* flex-wrap: wrap; */
+}
+/* Movie detailed profile left */
+.movie-dp{
+    flex: 1;
+    margin-right: 6%;
+
+}
+.movie-dp>img{
+    width: 100%;
+}
+.trailer-btn a{
+    display: block;
+    color: var(--white);
+    background-color: var(--red);
+    text-align: center;
+    width: 92%;
+    margin: auto;
+    padding:.8em 2em;
+    margin-top: 1.4em;
+    border-radius: 6px;
+    font-weight: 600;
+}
+.fa-play{
+    margin-right: .5em;
+    font-size: .8em;
+}
+
+/* Right movie description */
+.movie-descript{
+    flex: 2;
+}
+.movie-descript-heading span{
+    font-size: .6em;
+    font-weight: 400;
+    color: var(--light-white);
+}
+.movie-share{
+    padding: 2.5em 0;
+    display: flex;
+    color: var(--red);
+    align-items: center;
+}
+.share-icon{
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--red);
+    border-radius: 50%;
+    margin-right: 2em;
+}
+.movie-share a{
+    color: var(--red);
+}
+.social-icons>a{
+    font-size: 1.3em;
+    margin: 0 1em;
+}
+.movie-review{
+    display: flex;
+    align-items: center;
+    border-top: 1px solid var(--lines);
+    border-bottom: 1px solid var(--lines);
+    margin-bottom: 4em;
+}
+.review-score{
+    display: flex;
+    align-items: center;
+    border-right: 1px solid var(--lines);
+    padding-right: 2em;
+}
+.left-star{
+    margin: 1em 0;
+    margin-right: 1em;
+}
+.left-star i{
+    font-size: 1.5em;
+}
+.right-score>p{
+    font-size: 1.2em;
+}
+.right-score>small{
+    font-size: .92em;
+    color: var(--linky)
+}
+.rate-no-login{
+    color: var(--linky);
+    font-weight: 600;
+    text-decoration: underline;
+}
+.your-review-score{
+
+    padding-left: 2em;
+    display: flex;
+    align-items: center;
+}
+.rate-movie{
+    font-size: 1.4em;
+    font-weight: 300;
+    letter-spacing: .1em;
+    padding-right: .6em;
+    color: var(--light-white);
+}
+.rating-stars{
+    display: flex;
+}
+.rating-stars i{
+    padding: 0 .4em;
+    color: #fff;
+    display: block;
+} 
+.rating-stars:hover i{
+    color: var(--star);
+    cursor: pointer;
+
+}
+.rating-stars i:hover{
+    color: var(--star);
+}
+
+.rating-stars i:hover ~ i{
+    color: #fff;
+}
+
+/* Overview section starts */
+.movie-overview h2{
+    font-weight: 1.7em;
+    margin-bottom: .6em;
+}
+.movie-overview h3{
+    font-size: 1.3em;
+}
+.movie-overview h4{
+    font-size: 1.1em;
+}
+.movie-overview-inner{
+    display: flex;
+}
+.movie-overview-inner-left{
+    width: 70%;
+}
+.movie-summary p{
+    font-size: 1.05em;
+    line-height: 1.45em;
+    color: var(--light-white);
+    margin-bottom: 1.5em;
+}
+
+.movie-images h3, .movie-casts h3{
+    border-bottom: 1px solid var(--lines);
+    padding-bottom: .4em;
+    margin-bottom: 1.2em;
+}
+.movie-images-inner{
+    display: flex;
+    justify-content: space-between;
+
+}
+.movie-image-single{
+    width: 23%;
+}
+.movie-image-single img{
+    width: 100%;
+    border-radius: 13px;
+}
+.movie-casts{
+    padding: 1em 0;
+}
+.movie-casts-inner img{
+    margin-right: 1em;
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+}
+.single-movie-cast{
+    display: flex;
+    align-items: center;
+    padding-bottom: 1em;
+}
+.single-movie-cast a{
+    color: var(--linky);
+    font-family: sans-serif;
+}
+
+/* overview Right */
+.movie-overview-inner-right{
+    padding-left: 3em;
+    flex: 1;
+}
+.indiv{
+    padding-bottom: 2.2em;
+}
+.indiv h4{
+    padding-bottom: .6em;
+    font-weight: 600;
+    color: var(--light-white);
+}
+.indiv>p{
+    font-weight: 400;
+    color: var(--linky);
+}
+
 
 /* footer */
 .copyright{
@@ -220,7 +431,15 @@ header>.container{
     justify-content: center;
 }
 
-
-
-
-/* Make this into separate file */
+/* error page */
+.err-details{
+    text-align: center;
+}
+.err-details h1{
+    font-size: 2em;
+    margin: 1em 0;
+}
+.err-details p{
+    font-size: 2em;
+    margin: 1em 0;
+}

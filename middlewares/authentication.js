@@ -6,7 +6,7 @@ module.exports = function(req, res, next){
     // Check if there is token in the request
     // if there is no token, just call next()
     // if token, check if the token is verified or not with the help of JWT.verify
-    // after verification, test if the details of verified token is still up-to-date with database because jwt token works even after the deletion of the user of that token.
+    // after verification, test if the details of verified token are still up-to-date with database because jwt token works even after the deletion of the user of that token.
     // if token is up-to-date, put the fresh users detail from databasee in request object. 
     
     const token = req.cookies.jwt
@@ -33,7 +33,7 @@ module.exports = function(req, res, next){
                     })
                 }
                 // Case token verified and up-to-date with database
-                console.log('current user--> ',user);
+                // console.log('current user--> ',user);
                 // Set user's detail to request object
                 req.currentUser = user;
                 next()

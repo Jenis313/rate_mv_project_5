@@ -1,0 +1,16 @@
+<%- include('../partials/header') %>
+    <main>
+        <section class="404-err">
+            <div class="container">
+                <div class="err-details">
+                    <% if(status === 404){ %>
+                    <h1> <%= msg %> </h1>
+                    <% } else{ %>
+                        <h1>Something went wrong!</h1>
+                        <p><%= msg %></p>
+                    <% } %>
+                </div>
+            </div>
+        </section>
+    </main>
+<%- include('../partials/footer') %>
