@@ -43,7 +43,7 @@
                             <!-- if logged in but hasn't rated movie based on his/her database record allow rating -->
                             <!-- if logged in and already rated display-> <p>You rated //score from database</p> -->
                             <% if(!currentUser) {%>
-                                <p class="rate-movie">You must <a href="/login" class="rate-no-login">logged in</a> to rate movies</p>
+                                <p class="rate-movie">You must <a href="/login" class="rate-no-login">log in</a> to rate movies</p>
                             <% } else {%>
                                 <% if(!canRate){ %>
                                     <p class="rate-movie">You rated <span><%= rating %></span>  stars.</p>
