@@ -30,7 +30,7 @@ To run this project on your machine
 - Start server(node app.js)
 
 ## 🎈 Usage <a name="usage"></a>
-To use this web app simply visit the localhost at same port where this app is listening. If you'd like to rating feature you can create a new account by going to signup.
+To use this web app simply visit the localhost at same port where this app is listening. If you'd like to see rating feature you can create a new account by going to signup.
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 - [PostgreSQL](https://www.postgresql.org/) - Database
