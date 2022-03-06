@@ -21,6 +21,7 @@
 This is a simple web app which allows users to rate their favourite movie. As it is created as a learning project it may have some issues and vulnerabilities. It is not complete yet so I haven't hosted it anywhere but I have explained about it here in <a href = "https://www.youtube.com/watch?v=lde87KQPVd4">this</a> video.
 ## 🏁 Getting Started <a name = "getting_started"></a>
 To run this project on your machine
+```
 - git clone https://github.com/Jenis313/rate_mv_project_5.git
 - cd rate_mv_project_5
 - npm install
@@ -28,7 +29,7 @@ To run this project on your machine
 - npm run create_db 
 - npm run create_tables
 - Start server(node app.js)
-
+```
 ## 🎈 Usage <a name="usage"></a>
 To use this web app simply visit the localhost at same port where this app is listening. If you'd like to see rating feature you can create a new account by going to signup.
 
